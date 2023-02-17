@@ -10,7 +10,6 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function")
 def browser(request):
-    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     user_language = request.config.getoption("language")
 
     options = Options()
@@ -18,10 +17,7 @@ def browser(request):
 
     print("\nstart chrome browser for test..")
     driver = webdriver.Chrome(options=options)
-    driver.implicitly_wait(3)
 
-    driver.get(link)
-    sleep(5)
     yield driver
 
     print("\nquit browser..")
