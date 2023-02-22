@@ -41,11 +41,15 @@ class BasePage:
         go_to_basket_button = self.browser.find_element(*BasketPageLocators.GO_TO_BASKET)
         go_to_basket_button.click()
 
+    def open(self):
+        self.browser.get(self.url)
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
-    def open(self):
-        self.browser.get(self.url)
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
