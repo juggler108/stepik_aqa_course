@@ -28,6 +28,7 @@ class TestUserAddToBasketFromProductPage:
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser, link)
@@ -36,17 +37,6 @@ class TestUserAddToBasketFromProductPage:
         page.solve_quiz_and_get_code()
         page.should_be_message_added_to_basket_and_message_basket_price()
         page.product_name_and_price_are_same_product_name_and_price_in_messages()
-
-
-@pytest.mark.need_review
-def test_user_can_add_product_to_basket(browser):
-    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
-    page = ProductPage(browser, link)
-    page.open()
-    page.should_be_add_to_basket_button_and_add_product_to_basket()
-    page.solve_quiz_and_get_code()
-    page.should_be_message_added_to_basket_and_message_basket_price()
-    page.product_name_and_price_are_same_product_name_and_price_in_messages()
 
 
 @pytest.mark.need_review
